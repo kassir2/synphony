@@ -1,0 +1,21 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+product_add:
+    path: '/products/add'
+    controller: 'App\Controller\ProductController::add'
+
+product_edit:
+    path: '/product/edit/{id}'
+    controller: 'App\Controller\ProductController::edit'
+
+product_delete:
+    path: '/product/delete/{id}'
+    controller: 'App\Controller\ProductController::delete'
+
+product_list:
+    path: '/product/list'
+    controller: 'App\Controller\ProductController::list'

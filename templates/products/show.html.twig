@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %} {% block body %}
+<div class="jumbotron my-4 text-center">
+    <h1 class="display-4">Details of {{ product.name }}</h1>
+    <p>
+        {{ product.quantity == 0 ? 'unavailable product' : 'Quantity: ' ~ product.quantity }}
+    </p>
+    <center>
+        <p class="lead">
+            <div style="display: flex; max-width: 20%; text-align: center;" class="bd-placeholder-img card-img-right col-md-6 flex-auto d-none d-lg-block">
+
+                <img class="img-thumbnail" style="height: 10%;" src="{{ asset('img/' ~ product.photoName) }}" alt="Product">
+
+            </div>
+        </p>
+    </center>
+    <hr class="my-4">
+    <p>{{ product.description }}</p>
+    <a href="/products" role="button">Retour</a>
+</div>
+
+{% endblock %}

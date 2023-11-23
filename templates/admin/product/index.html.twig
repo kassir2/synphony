@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %} {% block title %}Hello ProductController!{% endblock %} {% block body %}
+<h1 class="text-center my-4">Product Management!</h1>
+
+
+<div class="my-4" style="text-align: right;">
+    <a href="{{ url('app_admin_product_form') }}" class="btn btn-dark">Add
+					<i class="fa-solid fa-plus"></i>
+				</a>
+
+</div>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Action</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <th class="w-25" scope="row">{{ product.id }}</th>
+            <td class="w-25">{{ product.name }}</td>
+            <td class="w-25">{{ product.description }}</td>
+            <td class="w-25">{{ product.price }}</td>
+            <td class="w-25">{{ product.quantity }}</td>
+            <td class="w-50"> <img class="img-thumbnail w-100" style="height: 100%;" src="{{ asset('img/' ~ product.photoName) }}" alt="Product"></td>
+            <td class="w-25"><button class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button> </td>
+            <td class="w-25"> <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %} {% block title %} {{ parent() }} My title {% endblock %} {% block body %}
+
+<div class="container slide-in-down">
+    <h1 class="mt-4 text-center">My array from the controller</h1>
+
+    <ul class="list-group my-2">
+        {% for item in my_array %}
+        <li class="list-group-item">{{ item }}</li>
+
+        {% endfor %}
+    </ul>
+
+    <h1 class="mt-4 text-center">My assoc_array from the controller</h1>
+
+    <ul class="list-group">
+        {% for key, value in assoc_array%}
+
+
+        <li class="list-group-item">{{ key }} => {{ value }}</li>
+
+
+        {% endfor %}
+    </ul>
+
+
+    <h1 class="text-center mt-4">Current Date</h1>
+
+
+    <button type="button" class="btn btn-dark">
+  {{ now | date('d/m/Y')}} <span class="badge badge-light">{{ now | date('H:i:s')}}</span>
+	</button>
+
+    <h1 class="text-center mt-4">Displaying image</h1>
+
+    <div class="text-center mt-2">
+        <img class="img-thumbnail" src="{{ asset('img/pierres.jpg ') }}" style="max-width: 20%;" alt="Pierres">
+    </div>
+
+</div>
+
+{% endblock %}

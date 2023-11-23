@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %} {% block body %}
+
+
+<h1 class="text-center my-4">Let's create a new product !</h1>
+
+
+<div class="container w-25">
+
+
+    {{ form_start(form) }}
+
+    <div class="form-group my-2">
+        {{ form_label(form.name, 'Product Name:') }} {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group my-2">
+        {{ form_label(form.description) }} {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group my-2">
+        {{ form_label(form.price) }} {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group my-2">
+        {{ form_label(form.quantity) }} {{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group my-2">
+        {{ form_label(form.category) }} {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group my-2">
+        {{ form_label(form.photo_name) }} {{ form_widget(form.photo_name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn btn-success" type="submit">Enregistrer</button> {{ form_end(form) }}
+
+</div>
+
+
+{% endblock %}

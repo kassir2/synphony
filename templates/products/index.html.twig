@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<head>
+
+    {% block extra_css %}
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+        
+        @media(min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    {% endblock %}
+
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted" href="#">Tech</a>
+                <a class="p-2 text-muted" href="#">Art</a>
+                <a class="p-2 text-muted" href="#">Culture</a>
+                <a class="p-2 text-muted" href="#">Business</a>
+            </nav>
+        </div>
+
+        <!-- <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mb-4">
+						            <div class="col-md-6 px-0">
+						                <h1 class="display-4 font-italic">All our products</h1>
+						                <p class="lead my-3">Explore our diverse range of high-quality products, meticulously crafted to meet your needs. From cutting-edge technology to timeless classics, our product page offers a curated selection that combines innovation with style.</p>
+						                <p class="lead mb-0">
+						                    <a href="#" class="text-white font-weight-bold">Continue reading...</a>
+						                </p>
+						            </div>
+						        </div> -->
+
+        <div class="my-4" style="text-align: right;">
+            <a href="/products/add" class="btn btn-dark">Add
+					<i class="fa-solid fa-plus"></i>
+				</a>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+            {% for product in products %}
+            <div class="col-md-6">
+                <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                    <div class="card-body d-flex flex-column col-md-6 align-items-start">
+                        <strong class="d-inline-block mb-2 text-primary">{{product.category.name}}</strong>
+                        <h3 class="mb-0">
+                            <a class="text-dark" href="#">{{product.name}}</a>
+                        </h3>
+                        <div class="mb-1 text-muted">{{product.price | format_currency('EUR', locale='fr') | replace({',00' : ''})}}</div>
+                        <p class="card-text mb-auto">{{product.description}}</p>
+                        <a class="btn btn-outline-primary" href="{{ url('products.show',  { id : product.id}) }}">Details</a>
+                    </div>
+
+                    <div class="bd-placeholder-img card-img-right col-md-6 flex-auto d-none d-lg-block">
+                        <img class="img-thumbnail" style="height: 100%;" src="{{ asset('img/' ~ product.photoName) }}" alt="Product">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="/docs/4.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
+
+</body>
+
+{% endblock %}
