@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %} {% block body %}
+
+
+<h1 class="text-center my-4">Contactez-nous!</h1>
+
+
+<div class="container w-25">
+
+    {% for label, messages in app.flashes %}
+    <div class="alert alert-{{ label }}">
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endfor %} {{ form_start(form, {attr : {novalidate : 'novalidate'}}) }}
+
+    <div class="form-group my-2">
+        {{ form_label(form.subject, 'Sujet:') }} {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }} {{ form_errors(form.subject) }}
+    </div>
+
+    <div class="form-group my-2">
+        {{ form_label(form.email) }} {{ form_widget(form.email, {'attr': {'class': 'form-control'} }) }} {{ form_errors(form.email) }}
+    </div>
+
+    <div class="form-group my-2">
+        {{ form_label(form.message) }} {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }} {{ form_errors(form.message) }}
+    </div>
+
+
+    <button class="btn btn-success" type="submit">Envoyer</button> {{ form_end(form) }}
+
+</div>
+
+
+{% endblock %}
